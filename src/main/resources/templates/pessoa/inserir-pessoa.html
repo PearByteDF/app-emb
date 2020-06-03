@@ -80,8 +80,17 @@
                         </div>
                     </div>
 
-                    <input type="hidden" id="botao" th:field="*{id}">
-                    <button type="submit" class="btn btn-light large">Inserir Pessoa</button>
+                    <div class="row">
+                        <div class="col align-self-center">
+                            <button type="submit" class="btn btn-danger large">Voltar</button>
+                        </div>
+
+                        <div class="col align-self-end">
+                            <input type="hidden" id="botao" th:field="*{id}">
+                            <button type="submit" class="btn btn-light large">Inserir Pessoa</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>

@@ -8,16 +8,34 @@ label {
     color: #cfcfcf;
 }
 
-input {
-    background-color: #e24242;
+.form-control{
+    background-color: #343a40;
+    color: #ffffff;
+    border: 1px solid #191919;
+}
+
+.form-control:focus{
+    background-color: #42474c;
+    color: #ffffff;
+}
+
+.custom-select {
+    background-color: #343a40;
+    border: 1px solid #191919;
 }
 
 .large{
     width: 100%;
     margin-top: 2rem;
-    padding: 2rem;
+    padding: 1rem;
 }
 
-button .btn .large {
+.btn-light {
+    background-color: #4bb85e;
+    border: 2px solid #0caa18;
+}
 
+.btn-danger {
+    background-color: #ef8a41;
+    border: 2px solid #dc7525;
 }
