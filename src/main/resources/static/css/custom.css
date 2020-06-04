@@ -1,5 +1,6 @@
 .fundo {
     background-color: #2e2a2e;
+    font-size: 0.9em;
 }
 
 label {
@@ -12,6 +13,18 @@ label {
     background-color: #343a40;
     color: #ffffff;
     border: 1px solid #191919;
+}
+
+.card {
+    margin-top: 1rem;
+    background-color: #343a40;
+    border: none;
+}
+
+.card-body {
+    border: 1px solid;
+    padding: 0.5rem;
+    line-height: unset;
 }
 
 .form-control:focus{
@@ -27,7 +40,11 @@ label {
 .large{
     width: 100%;
     margin-top: 2rem;
-    padding: 1rem;
+}
+
+.thead {
+    font-style: unset;
+    font-weight: unset;
 }
 
 .btn-light {
@@ -35,7 +52,58 @@ label {
     border: 2px solid #0caa18;
 }
 
+.btn-light:hover {
+    background-color: #0caa18;
+}
+
 .btn-danger {
     background-color: #ef8a41;
     border: 2px solid #dc7525;
+}
+
+h1 {
+    margin-top: 2rem;
+    color: #cfcfcf;
+}
+
+.h1-alinhado-esquerda-border-bottom {
+    text-align: left;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+
+/*TABELAS*/
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #343a40;
+}
+
+.icone-editar {
+    font-size: 1.1rem;
+    padding-left: 0.2rem;
+    color: #4bb85e;
+}
+
+.icone-excluir {
+    font-size: 1.2rem;
+    padding-left: 0.2rem;
+    padding-top: 0.1rem;
+    color: #ff5f5f;
+}
+
+.fa .fas .card-body {
+   font-size: 10px;
+}
+
+.table {
+    margin: unset;
+}
+
+.estilo-cabecalho {
+    background-color: #cfcfcf;
+    color: #2e2a2e;
+}
+
+.estilo-linha {
+    background-color: #2e2a2e;
 }

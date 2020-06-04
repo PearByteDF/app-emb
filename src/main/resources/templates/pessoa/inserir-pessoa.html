@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
     <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
     <link th:href="@{/css/custom.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
@@ -13,7 +14,11 @@
     <div class="row">
         <div class="col-12">
             <div class="container-fluid">
-                <h3 style="text-align: center;">Cadastro de Pessoa</h3>
+
+                <div class="col">
+                    <h1 class="h1-alinhado-esquerda-border-bottom">Cadastrar Usuario</h1>
+                </div>
+
                 <br>
                 <form action="#" th:action="@{/pessoas/salvar-pessoa}" th:object="${pessoa}" method="post">
 
@@ -81,13 +86,16 @@
                     </div>
 
                     <div class="row">
-                        <div class="col align-self-center">
-                            <button type="submit" class="btn btn-danger large">Voltar</button>
+                        <div class="col-sm">
+
+                        </div>
+                        <div class="col-sm">
+                            <button onclick="history.go(-1)" type="submit" class="btn btn-danger large">Cancelar</button>
                         </div>
 
-                        <div class="col align-self-end">
+                        <div class="col-sm">
                             <input type="hidden" id="botao" th:field="*{id}">
-                            <button type="submit" class="btn btn-light large">Inserir Pessoa</button>
+                            <button type="submit" class="btn btn-light large" style="margin-top: 2rem;">Salvar</button>
                         </div>
                     </div>
 
