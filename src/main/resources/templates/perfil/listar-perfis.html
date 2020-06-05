@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Listar Perfis</title>
+</head>
+<body class="fundo">
+<div th:insert="~{fragmentos/header::header}"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="col-4">
+                    <a th:href="@{/perfis/inserir-perfil}" class="btn btn-success">Cadastrar Perfil</a>
+                </div>
+                <div class="card-body">
+                    <h3>Perfis</h3>
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="perfil:${listarPerfis}">
+                            <th th:text="${perfil.id}"></th>
+                            <td th:text="${perfil.perfil}"></td>
+                            <td>
+                                <a th:href="@{/perfis/deletar-perfil/{id}(id=${perfil.id})}" class="btn btn-danger">Deletar</a>
+                                <a th:href="@{/perfis/atualizar-perfil/{id}(id=${perfil.id})}" class="btn btn-warning">Atualizar</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

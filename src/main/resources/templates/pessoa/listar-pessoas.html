@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+    <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/custom.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Listar Pessoas</title>
+</head>
+<body class="fundo">
+<div th:insert="~{fragmentos/header::header}"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="col">
+                <h1 class="h1-alinhado-esquerda-border-bottom">Usuarios</h1>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table-responsive-md table table-striped table-dark table-sm">
+                        <thead class="estilo-cabecalho">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">RG</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Data de Nascimento</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Ativo?</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="pessoa:${listarPessoas}" class="estilo-linha">
+                            <th th:text="${pessoa.id}"></th>
+                            <th th:text="${pessoa.nome}"></th>
+                            <td th:text="${pessoa.rg}"></td>
+                            <td th:text="${pessoa.cpf}"></td>
+                            <td th:text="${pessoa.dataNascimento}"></td>
+                            <td th:text="${pessoa.email}"></td>
+                            <td th:text="${pessoa.telefone}"></td>
+                            <td th:text="${pessoa.endereco}"></td>
+                            <td th:text="${pessoa.ativo} ? 'Ativo' : 'Inativo'"></td>
+                            <td th:text="${pessoa.perfil.perfil}"></td>
+                            <td>
+                                <a th:href="@{/pessoas/atualizar-pessoa/{cpf}(cpf=${pessoa.cpf})}">
+                                    <i class="fas fa-pencil-alt icone-editar" data-toggle="tooltip" data-placement="top"
+                                       title="Editar Usuário"></i></a>
+
+                                <a th:href="@{/pessoas/deletar-pessoa/{cpf}(cpf=${pessoa.cpf})}">
+                                    <i class="fas fa-times icone-excluir" data-toggle="tooltip" data-placement="top"
+                                       title="Deletar Usuário"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+        <div class="col-sm">
+            <a th:href="@{/pessoas/inserir-pessoa}" class="btn btn-light large">Novo Usuário</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

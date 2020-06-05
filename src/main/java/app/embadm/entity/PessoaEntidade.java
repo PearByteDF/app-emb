@@ -10,7 +10,9 @@ import java.util.List;
 @Table (name = "pessoa")
 public class PessoaEntidade {
 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
@@ -22,12 +24,13 @@ public class PessoaEntidade {
     @NotBlank
     private String rg;
 
-    @Id
     @Column(nullable = false)
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 1, max = 20)
     private String cpf;
 
+    private String usuario;
+    private String senha;
     private String telefone;
     private String endereco;
 
@@ -37,31 +40,13 @@ public class PessoaEntidade {
 
     @Column(nullable = false)
     @NotBlank
-    private LocalDate dataNascimento;
+    private String dataNascimento;
 
     private Boolean ativo;
 
-    @ManyToMany
-    @JoinTable(name = "pessoasPerfis",
-            joinColumns = { @JoinColumn(name = "cpfPessoa") },
-            inverseJoinColumns = {@JoinColumn(name = "idPerfil") })
-    private List<PerfilEntidade> perfis;
-
-    @ManyToMany
-    @JoinTable(name = "pessoasNiveis",
-            joinColumns = { @JoinColumn(name = "cpfPessoa") },
-            inverseJoinColumns = {@JoinColumn(name = "idNivel") })
-    private List<NivelEntidade> niveis;
-
-    @ManyToMany
-    @JoinTable(name = "pessoasTurnos",
-    joinColumns = {@JoinColumn(name = "cpfPessoa") },
-    inverseJoinColumns = {@JoinColumn(name = "idTurno") })
-    private List<TurnoEntidade> turnos;
-
-    public PessoaEntidade() {
-        ativo = true;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idPerfil")
+    private PerfilEntidade perfil;
 
     public Integer getId() {
         return id;
@@ -69,6 +54,10 @@ public class PessoaEntidade {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public PessoaEntidade() {
+        ativo = true;
     }
 
     public String getNome() {
@@ -119,11 +108,11 @@ public class PessoaEntidade {
         this.email = email;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -135,27 +124,11 @@ public class PessoaEntidade {
         this.ativo = ativo;
     }
 
-    public List<PerfilEntidade> getPerfis() {
-        return perfis;
+    public PerfilEntidade getPerfil() {
+        return perfil;
     }
 
-    public void setPerfis(List<PerfilEntidade> perfis) {
-        this.perfis = perfis;
-    }
-
-    public List<NivelEntidade> getNiveis() {
-        return niveis;
-    }
-
-    public void setNiveis(List<NivelEntidade> niveis) {
-        this.niveis = niveis;
-    }
-
-    public List<TurnoEntidade> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(List<TurnoEntidade> turnos) {
-        this.turnos = turnos;
+    public void setPerfil(PerfilEntidade perfil) {
+        this.perfil = perfil;
     }
 }

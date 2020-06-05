@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" type="text/css" rel="stylesheet"/>
+<!--    <link th:href="@{../../static/css/custom.css}" type="text/css" rel="stylesheet">-->
+    <meta charset="UTF-8">
+    <title>Listar Materias</title>
+</head>
+<body class="fundo">
+<div th:insert="~{fragmentos/header::header}"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="col-4">
+                    <a th:href="@{/materias/inserir-materia}" class="btn btn-success">Cadastrar Materia</a>
+                </div>
+                <div class="card-body">
+                    <h3>Materias</h3>
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Materia</th>
+                            <th scope="col">Ativa?</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="materia:${listarMaterias}">
+                            <th th:text="${materia.id}"></th>
+                            <th th:text="${materia.nome}"></th>
+                            <td th:text="${materia.ativo} ? 'Ativo' : 'Inativo'"></td>
+                            <td>
+                                <a th:href="@{/materias/deletar-materia/{id}(id=${materia.id})}" class="btn btn-danger">Deletar</a>
+                                <a th:href="@{/materias/atualizar-materia/{id}(id=${materia.id})}" class="btn btn-warning">Atualizar</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
