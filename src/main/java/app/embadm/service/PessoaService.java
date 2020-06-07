@@ -22,32 +22,39 @@ public class PessoaService extends RespostaAbstrata {
         super();
     }
 
-    public PessoaService salvarPessoa (PessoaEntidade pessoa) {
+    public PessoaService salvarPessoa(PessoaEntidade pessoa) {
         pessoaRepository.save(pessoa);
         return this;
     }
 
-    public PessoaService listarTodasPessoas () {
+    public PessoaService listarTodasPessoas() {
         adicionarAtributoDaResposta(LISTA_PESSOAS, StreamSupport
-            .stream(pessoaRepository.findAll().spliterator(), false)
-            .collect(Collectors.toList()));
+                .stream(pessoaRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList()));
         return this;
     }
 
-    public PessoaService deletarPessoaPorCpf (String cpf) {
+    public PessoaService filtrarPessoa(String nomePessoaFiltro, String cpfPessoaFiltro) {
+        adicionarAtributoDaResposta(LISTA_PESSOAS, StreamSupport
+                .stream(pessoaRepository.filtrarPorNome(nomePessoaFiltro, cpfPessoaFiltro).spliterator(), false)
+                .collect(Collectors.toList()));
+        return this;
+    }
+
+    public PessoaService deletarPessoaPorCpf(String cpf) {
         pessoaRepository.deleteByCpf(cpf);
         return this;
     }
 
-    public PessoaService obterPessoaPorCpf (String cpf) {
+    public PessoaService obterPessoaPorCpf(String cpf) {
         adicionarAtributoDaResposta(ATRIBUTO_PESSOA, pessoaRepository.findByCpf(cpf));
         return this;
     }
 
-    public PessoaService obterPessoaPorId (Integer id) {
+    public PessoaService obterPessoaPorId(Integer id) {
         adicionarAtributoDaResposta(ATRIBUTO_PESSOA, pessoaRepository
                 .findById(id).orElseGet(PessoaEntidade::new));
         return this;
     }
-    
+
 }
