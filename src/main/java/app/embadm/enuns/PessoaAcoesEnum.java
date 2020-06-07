@@ -4,9 +4,9 @@ import app.embadm.Acao;
 
 public enum PessoaAcoesEnum implements Acao {
 
-    REDIRECIONAR_PESSOA("redirect:/pessoas/listar-pessoas"),
-    LISTAR_PESSOA_ENDPOINT("pessoa/listar-pessoas"),
-    INCLUIR_PESSOA("pessoa/inserir-pessoa");
+    REDIRECIONAR_PESSOA_ENDPOINT("redirect:/pessoas/listar-pessoas"),
+    LISTAR_PESSOA_TEMPLATE("pessoa/listar-pessoas"),
+    INCLUIR_PESSOA_TEMPLATE("pessoa/inserir-pessoa");
 
     private String acao;
 
