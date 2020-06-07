@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
+          type="text/css"/>
     <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" type="text/css" rel="stylesheet"/>
     <link th:href="@{/css/custom.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
@@ -16,6 +17,41 @@
             <div class="col">
                 <h1 class="h1-alinhado-esquerda-border-bottom">Usuarios</h1>
             </div>
+            <br>
+            <form action="filtar-pessoa" method="post">
+
+                <div class="row">
+                    <div class="col-sm">
+                        <label for="nome-pessoa-filtro">Nome</label>
+                        <input type="text" class="form-control" id="nome-pessoa-filtro"
+                               name="nome-pessoa-filtro">
+                    </div>
+
+                    <div class="col-sm">
+                        <label for="cpf-pessoa-filtro">CPF</label>
+                        <input type="text" class="form-control" id="cpf-pessoa-filtro"
+                               name="cpf-pessoa-filtro">
+                    </div>
+
+                    <div class="col-sm">
+                        <label for="perfil-filtro">Perfil</label>
+                        <input type="text" class="form-control" id="perfil-filtro"
+                               name="perfil-filtro">
+                    </div>
+
+                    <div class="col-sm">
+                        <button class="btn btn-light large" type="submit" value="Filtrar">Pesquisar
+                            <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+<!--                        Criar botão de limpar filtro aqui-->
+                    </div>
+                </div>
+
+            </form>
             <br>
             <div class="card">
                 <div class="card-body">
@@ -62,6 +98,7 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm"></div>
         <div class="col-sm"></div>
         <div class="col-sm"></div>
         <div class="col-sm">
