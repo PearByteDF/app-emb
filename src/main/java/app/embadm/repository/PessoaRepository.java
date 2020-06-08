@@ -21,7 +21,11 @@ public interface PessoaRepository extends CrudRepository<PessoaEntidade, Integer
     PessoaEntidade findByCpf (String cpf);
 
     @Transactional
-    @Query("select p FROM pessoa p where p.nome LIKE %:nome% and p.cpf LIKE %:cpf%")
-    List<PessoaEntidade> filtrarPorNome (@Param("nome") String nome, @Param("cpf") String cpf);
+    @Query("SELECT pe FROM pessoa pe " +
+            "INNER JOIN perfil per ON pe.perfil.id = per.id " +
+            "WHERE pe.nome LIKE %:nome% AND pe.cpf LIKE %:cpf% AND pe.perfil.perfil LIKE %:perfil% ")
+    List<PessoaEntidade> filtrarPessoa (@Param("nome") String nome,
+                                        @Param("cpf") String cpf,
+                                        @Param("perfil") String id_perfil);
 
 }

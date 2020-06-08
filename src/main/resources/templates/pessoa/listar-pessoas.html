@@ -34,21 +34,23 @@
                     </div>
 
                     <div class="col-sm">
-                        <label for="perfil-filtro">Perfil</label>
-                        <input type="text" class="form-control" id="perfil-filtro"
-                               name="perfil-filtro">
+                        <select class="custom-select select-margin-top2rem" id="perfil-filtro" name="perfil-filtro">
+                            <option th:each="perfil:${perfis}" th:value="${perfil.perfil}"
+                                    th:text="${{perfil.perfil}}"></option>
+                        </select>
                     </div>
 
-                    <div class="col-sm">
-                        <button class="btn btn-light large" type="submit" value="Filtrar">Pesquisar
-                            <i class="fas fa-search"></i></button>
-                    </div>
-                </div>
+                    <div class="col-sm btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-light filtro-btn" type="submit" value="Filtrar" data-toggle="tooltip"
+                                data-placement="top" title="Filtrar">
+                            <i class="fas fa-search" data-toggle="tooltip" title="Filtrar"></i></button>
 
-                <div class="row">
-                    <div>
-<!--                        Criar botão de limpar filtro aqui-->
+                        <a class="btn btn-danger filtro-btn" th:href="@{/pessoas/listar-pessoas}">
+                            <i class="fas fa-hand-middle-finger" data-toggle="tooltip" data-placement="top"
+                               title="Filtrar"></i>
+                        </a>
                     </div>
+
                 </div>
 
             </form>
@@ -58,7 +60,6 @@
                     <table class="table-responsive-md table table-striped table-dark table-sm">
                         <thead class="estilo-cabecalho">
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">RG</th>
                             <th scope="col">CPF</th>
@@ -73,7 +74,6 @@
                         </thead>
                         <tbody>
                         <tr th:each="pessoa:${listarPessoas}" class="estilo-linha">
-                            <th th:text="${pessoa.id}"></th>
                             <th th:text="${pessoa.nome}"></th>
                             <td th:text="${pessoa.rg}"></td>
                             <td th:text="${pessoa.cpf}"></td>
@@ -106,5 +106,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html>

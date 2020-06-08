@@ -36,6 +36,7 @@ public class PessoaController {
     @GetMapping("listar-pessoas")
     public String listarPessoas(Model model) {
         return pessoaService.listarTodasPessoas()
+                .adicionarAtributoDaResposta("perfis", perfilService.listarTodosOsPerfis())
                 .uploadAtributosModelo(model)
                 .redirecionar(PessoaAcoesEnum.LISTAR_PESSOA_TEMPLATE);
     }
@@ -56,8 +57,9 @@ public class PessoaController {
 
     @PostMapping("**/filtar-pessoa")
     public String filtrarPessoa(@RequestParam("nome-pessoa-filtro") String nomePessoaFiltro,
-                                @RequestParam("cpf-pessoa-filtro") String cpfPessoaFiltro, Model model) {
-        return pessoaService.filtrarPessoa(nomePessoaFiltro, cpfPessoaFiltro)
+                                @RequestParam("cpf-pessoa-filtro") String cpfPessoaFiltro,
+                                @RequestParam("perfil-filtro")String perfilPessoaFiltro, Model model) {
+        return pessoaService.filtrarPessoa(nomePessoaFiltro, cpfPessoaFiltro, perfilPessoaFiltro)
                 .uploadAtributosModelo(model)
                 .redirecionar(PessoaAcoesEnum.LISTAR_PESSOA_TEMPLATE);
     }

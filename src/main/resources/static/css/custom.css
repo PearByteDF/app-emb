@@ -42,6 +42,11 @@ label {
     margin-top: 2rem;
 }
 
+.filtro-btn{
+    width: 50%;
+    margin-top: 2rem;
+}
+
 .thead {
     font-style: unset;
     font-weight: unset;
@@ -107,4 +112,9 @@ h1 {
 
 .estilo-linha {
     background-color: #2e2a2e;
+}
+
+/*SELECT FUNÇÕES*/
+.select-margin-top2rem{
+    margin-top: 2rem;
 }

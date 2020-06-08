@@ -34,10 +34,10 @@ public class PessoaService extends RespostaAbstrata {
         return this;
     }
 
-    public PessoaService filtrarPessoa(String nomePessoaFiltro, String cpfPessoaFiltro) {
+    public PessoaService filtrarPessoa(String nomePessoaFiltro, String cpfPessoaFiltro, String perfilFiltro) {
         adicionarAtributoDaResposta(LISTA_PESSOAS, StreamSupport
-                .stream(pessoaRepository.filtrarPorNome(nomePessoaFiltro, cpfPessoaFiltro).spliterator(), false)
-                .collect(Collectors.toList()));
+                .stream(pessoaRepository.filtrarPessoa(nomePessoaFiltro, cpfPessoaFiltro, perfilFiltro)
+                        .spliterator(), false).collect(Collectors.toList()));
         return this;
     }
 

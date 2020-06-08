@@ -3,7 +3,7 @@ package app.embadm.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@Entity
+@Entity(name = "perfil")
 @Table(name = "perfil")
 public class PerfilEntidade {
 
