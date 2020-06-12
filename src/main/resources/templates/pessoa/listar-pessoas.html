@@ -7,7 +7,11 @@
     <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" type="text/css" rel="stylesheet"/>
     <link th:href="@{/css/custom.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
     <title>Listar Pessoas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body class="fundo">
 <div th:insert="~{fragmentos/header::header}"></div>
@@ -66,8 +70,6 @@
                             <th scope="col">Data de Nascimento</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Telefone</th>
-                            <th scope="col">Endereço</th>
-                            <th scope="col">Ativo?</th>
                             <th scope="col">Perfil</th>
                             <th scope="col">Ações</th>
                         </tr>
@@ -80,15 +82,14 @@
                             <td th:text="${pessoa.dataNascimento}"></td>
                             <td th:text="${pessoa.email}"></td>
                             <td th:text="${pessoa.telefone}"></td>
-                            <td th:text="${pessoa.endereco}"></td>
-                            <td th:text="${pessoa.ativo} ? 'Ativo' : 'Inativo'"></td>
                             <td th:text="${pessoa.perfil.perfil}"></td>
                             <td>
                                 <a th:href="@{/pessoas/atualizar-pessoa/{cpf}(cpf=${pessoa.cpf})}">
                                     <i class="fas fa-pencil-alt icone-editar" data-toggle="tooltip" data-placement="top"
                                        title="Editar Usuário"></i></a>
 
-                                <a th:href="@{/pessoas/deletar-pessoa/{cpf}(cpf=${pessoa.cpf})}">
+                                <a href="javascript:void(0)" id="porra"
+                                   type="button" th:onclick="deletar([[${pessoa.cpf}]], [[${pessoa.nome}]])">
                                     <i class="fas fa-times icone-excluir" data-toggle="tooltip" data-placement="top"
                                        title="Deletar Usuário"></i></a>
                             </td>
@@ -107,9 +108,10 @@
     </div>
 </div>
 <script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+    $(":input").inputmask();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<script th:inline="javascript" th:src="@{/js/pessoa/pessoa.js}">
 </script>
 </body>
 </html>
